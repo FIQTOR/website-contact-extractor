@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme='dark'] {
+  --wce-bg: #0b0d12;
+  --wce-surface: #141720;
+  --wce-surface-2: #191d28;
+  --wce-border: #252b38;
+  --wce-border-strong: #374151;
+  --wce-accent: #8b5cf6;
+  --wce-accent-hover: #7c3aed;
+  --wce-accent-soft: rgba(139, 92, 246, 0.14);
+  --wce-text: #f8fafc;
+  --wce-muted: #94a3b8;
+  --wce-danger: #f87171;
+  --wce-danger-soft: rgba(248, 113, 113, 0.12);
+  --wce-success: #34d399;
+  --wce-success-soft: rgba(52, 211, 153, 0.12);
+  --wce-shadow: 0 18px 45px -22px rgba(0, 0, 0, 0.9);
+}
+
+[data-theme='light'] {
+  --wce-bg: #f2f4fa;
+  --wce-surface: #ffffff;
+  --wce-surface-2: #f8fafc;
+  --wce-border: #e2e8f0;
+  --wce-border-strong: #cbd5e1;
+  --wce-accent: #7c3aed;
+  --wce-accent-hover: #6d28d9;
+  --wce-accent-soft: rgba(124, 58, 237, 0.1);
+  --wce-text: #0f172a;
+  --wce-muted: #64748b;
+  --wce-danger: #dc2626;
+  --wce-danger-soft: rgba(220, 38, 38, 0.08);
+  --wce-success: #059669;
+  --wce-success-soft: rgba(5, 150, 105, 0.1);
+  --wce-shadow: 0 18px 40px -26px rgba(15, 23, 42, 0.4);
+}
+
+@layer base {
+  html,
+  body {
+    width: 420px;
+    height: 600px;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--wce-bg);
+    color: var(--wce-text);
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    height: 100%;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.35);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--wce-border-strong);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--wce-muted);
+    background-clip: padding-box;
+  }
+}
+
+@layer components {
+  .wce-input {
+    @apply w-full rounded-lg border border-border bg-surface-2 px-2.5 py-2 text-[12px] text-text outline-none transition;
+  }
+
+  .wce-input::placeholder {
+    color: var(--wce-muted);
+    opacity: 0.65;
+  }
+
+  .wce-input:focus {
+    border-color: rgba(139, 92, 246, 0.65);
+    box-shadow: 0 0 0 3px var(--wce-accent-soft);
+  }
+
+  .wce-label {
+    @apply text-[10px] font-semibold uppercase tracking-[0.09em] text-muted;
+  }
+
+  .wce-card {
+    @apply rounded-xl border border-border bg-surface;
+    box-shadow: var(--wce-shadow);
+  }
+
+  .wce-surface-row {
+    @apply rounded-lg border border-border bg-surface-2;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
